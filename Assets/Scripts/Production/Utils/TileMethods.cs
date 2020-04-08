@@ -16,4 +16,12 @@ public static class TileMethods
     {
         return type == TileType.Path || type == TileType.Start || type == TileType.End;
     }
+    //public static TileType GetType(char sign)
+    //{
+    //    if (sign != ' ')
+    //    {
+
+    //    }
+    //    return
+    //}
 }

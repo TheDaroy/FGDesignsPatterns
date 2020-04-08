@@ -7,4 +7,6 @@ namespace AI
     {
         IEnumerable<Vector2Int> FindPath(Vector2Int start, Vector2Int goal);
     }
+
+  
 }
