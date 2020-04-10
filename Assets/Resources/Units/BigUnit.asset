@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98dbd7692104fb4e9019639b2ffc38b, type: 3}
   m_Name: BigUnit
   m_EditorClassIdentifier: 
-  preFab: {fileID: 0}
+  preFab: {fileID: 3358623668188840345, guid: 116fda0e5defb46aba819fdb1f4ec0bf, type: 3}
   typeToSpawn: 0
-  health: 0
-  damage: 0
-  walkSpeed: 0
+  health: 10
+  damage: 1
+  walkSpeed: 1
+  objectsToAdd: 1

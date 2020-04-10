@@ -1,14 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Tools;
 
-public class ObjectPool 
+namespace MemoryTool
 {
-    public List<GameObject>[] pool;
-    public ObjectPool(int i)
+    public class ObjectPool : IPool<GameObject>
     {
-        pool = new List<GameObject>[i];
+        Transform parent;
+        GameObject prefab;
+        uint objectsToAdd;
+        readonly Stack<GameObject> objectStack = new Stack<GameObject>();
+        public ObjectPool(GameObject _prefab, Transform _parent = null, uint _objectsToAdd = 1)
+        {
+            
+            prefab = _prefab;
+            parent = _parent;
+            objectsToAdd = _objectsToAdd;
+        }
+        private void AddObject()
+        {
+            for (int i = 0; i < objectsToAdd; i++)
+            {
+                GameObject instance = Object.Instantiate(prefab, parent);
+                OnDisableEvent disableEvent = instance.AddComponent<OnDisableEvent>();
+                disableEvent.OnDisableObject += AddToStack;
+               
+                objectStack.Push(instance);
+            }
+        }
+        
+        private void AddToStack(GameObject gameObject)
+        {
+            objectStack.Push(gameObject);
+        }
+        public GameObject GetUnit(bool returnActive)
+        {            
+            if (objectStack.Count == 0)
+            {
+                AddObject();
+            }
+            GameObject instance = objectStack.Pop();
+            instance.SetActive(returnActive);
+            return instance;
+        }
+
+        
+
     }
-
-
 }
+

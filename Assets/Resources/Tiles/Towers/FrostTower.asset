@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4584082dde3ec842a5d851a852a73f3, type: 3}
-  m_Name: End
+  m_Script: {fileID: 11500000, guid: a73a5f5f62d16b243916c332f9f48355, type: 3}
+  m_Name: FrostTower
   m_EditorClassIdentifier: 
-  sign: 5
-  prefab: {fileID: 8446340793006353421, guid: 3445e6bc04d6d478291c03e5d82bb4fc, type: 3}
-  towerInfo: {fileID: 0}
+  projectile: {fileID: 11400000, guid: 9a4e1c0e0bae4084f8a87b4d6cbab112, type: 2}
+  attackSpeed: 1
   objectstoadd: 1

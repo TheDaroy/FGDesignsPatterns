@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   sign: 4
-  tile: {fileID: 5719485938209910767, guid: 9058376e4a8804756acc0e60103feae4, type: 3}
+  prefab: {fileID: 8446340793006353421, guid: 3445e6bc04d6d478291c03e5d82bb4fc, type: 3}
+  towerInfo: {fileID: 0}
+  objectstoadd: 1

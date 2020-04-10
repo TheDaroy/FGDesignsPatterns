@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class UnitManager : ManagerBase
@@ -10,7 +9,7 @@ public class UnitManager : ManagerBase
     [SerializeField] private UnitSpawner spawner;
     [SerializeField] private UnitObject[] unitSpawnList; public UnitObject[] UnitSpawnList { get { return unitSpawnList; } private set { unitSpawnList = value; } }
 
-
+    public event Action<UnitManager> Reset;
     private UnitType[][] cachedWaveData;
     private void Awake()
     {
@@ -35,6 +34,7 @@ public class UnitManager : ManagerBase
                 spawner.SpawnWave(cachedWaveData[0]);
                 break;
             case GameState.Restart:
+                Reset?.Invoke(this);
                 break;
             case GameState.NextLevel:
                 break;

@@ -35,8 +35,9 @@ namespace AI
                     Vector2Int tempNode = currentNode + DirectionTools.Dirs[i];
                     if (accessiblesTiles.Contains(tempNode) && !ancestors.ContainsKey(tempNode))
                     {
+                        ancestors[tempNode] = currentNode;
                         neighbours.Enqueue(tempNode);
-                        ancestors.Add(tempNode, currentNode);
+                       
                     }
                 }
             }

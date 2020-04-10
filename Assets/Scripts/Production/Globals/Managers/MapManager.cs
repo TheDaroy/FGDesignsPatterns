@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class MapManager : ManagerBase
@@ -9,8 +8,9 @@ public class MapManager : ManagerBase
     [Header("Map Variables")]
     private TileType[][] cachedMapData; 
     [SerializeField] private TileObject[] tileSpawnList; public TileObject[] TileSpawnList { get { return tileSpawnList; } private set { tileSpawnList = value; } }
+    
     #endregion
-
+    public event Action<MapManager> Reset;
     private void Awake()
     {
         Setup();
@@ -31,9 +31,11 @@ public class MapManager : ManagerBase
                 CreateMap();
                 break;
             case GameState.Restart:
+                Reset?.Invoke(this);
                 CreateMap();
                 break;
             case GameState.NextLevel:
+                Reset?.Invoke(this);
                 UpdateMapData(mainManager.GetTileData());
                 CreateMap();
                 break;

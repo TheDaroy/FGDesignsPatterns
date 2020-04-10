@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Obstacle
   m_EditorClassIdentifier: 
   sign: 1
-  tile: {fileID: 5807043221564994009, guid: 146d056a4463e4d4380e1679e4d2e16f, type: 3}
+  prefab: {fileID: 5807043221564994009, guid: 146d056a4463e4d4380e1679e4d2e16f, type: 3}
+  towerInfo: {fileID: 0}
+  objectstoadd: 1

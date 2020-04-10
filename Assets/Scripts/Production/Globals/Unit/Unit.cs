@@ -24,7 +24,7 @@ public class Unit : MonoBehaviour
     {
         startPos = manager.GetNewVector(0);
         endPos = manager.GetNewVector(1);
-    }
+    }  
     void OnDespawn()
     {
         i = 1;
@@ -53,5 +53,13 @@ public class Unit : MonoBehaviour
         startPos = endPos;
         endPos = manager.GetNewVector(i);
     }
-
+    public void DeSpawn(UnitManager manager)
+    {
+        OnDespawn();
+        manager.Reset -= DeSpawn;
+        gameObject.SetActive(false);
+        
+    }
+    
+    
 }

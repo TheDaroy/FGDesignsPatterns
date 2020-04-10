@@ -2,6 +2,6 @@
 {
     public interface IPool<T>
     {
-        T Rent(bool returnActive);
+        T GetUnit(bool returnActive);
     }
 }

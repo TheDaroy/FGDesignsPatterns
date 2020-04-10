@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Path
   m_EditorClassIdentifier: 
   sign: 0
-  tile: {fileID: 8446340793006353421, guid: 3445e6bc04d6d478291c03e5d82bb4fc, type: 3}
+  prefab: {fileID: 8446340793006353421, guid: 3445e6bc04d6d478291c03e5d82bb4fc, type: 3}
+  towerInfo: {fileID: 0}
+  objectstoadd: 1
