@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -13,26 +12,28 @@ public class Unit : MonoBehaviour
     public int Damage { get { return damage; }  set { damage = value; } }
     public float WalkSpeed { get { return walkSpeed; }  set { walkSpeed = value; } }
 
+    
+
     float alpha = 0;
     public UnitManager manager;
+    UnitEffectHandler handler;
+    public event Action<GameObject> onDeath;
 
+    public Vector3 endGoal;
     public Vector3 startPos;
     public Vector3 endPos;
     private int i = 1;
  
-    void OnSpawn()
+    
+ 
+    private void OnEnable()
     {
         startPos = manager.GetNewVector(0);
         endPos = manager.GetNewVector(1);
-    }  
-    void OnDespawn()
-    {
-        i = 1;
+        transform.LookAt(endPos);
     }
-    private void Start()
-    {
-        OnSpawn();
-    }
+   
+   
     private void Update()
     {
         Move();
@@ -50,16 +51,39 @@ public class Unit : MonoBehaviour
     }
     void UpdateVectors()
     {
-        startPos = endPos;
-        endPos = manager.GetNewVector(i);
+        Debug.Log(endPos + " : " + endGoal);
+        if (endPos == endGoal)
+        {
+            manager.waveHandler.TakeDamage(damage);
+            DeSpawn();
+        }
+        else
+        {
+            startPos = endPos;
+            endPos = manager.GetNewVector(i);
+            transform.LookAt(endPos);
+        }
+        
     }
-    public void DeSpawn(UnitManager manager)
+    public void DeSpawn()
     {
-        OnDespawn();
-        manager.Reset -= DeSpawn;
+        
         gameObject.SetActive(false);
         
     }
-    
+    private void OnDisable()
+    {
+        i = 1;
+       
+        manager.Reset -= DeSpawn;
+    }
+    public void ApplyDamage(int damageTaken)
+    {
+        health -= damageTaken;
+        if (health <= 0)
+        {
+            DeSpawn();
+        }
+    }
     
 }

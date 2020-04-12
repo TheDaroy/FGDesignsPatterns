@@ -10,7 +10,7 @@ public class TileObject : ScriptableObject
 
     [SerializeField] private TileType sign;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private TowerObject towerInfo;
+    [SerializeField] private TowerObject towerInfo = null;
     
 
 

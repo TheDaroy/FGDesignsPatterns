@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ExplosiveProjectile
   m_EditorClassIdentifier: 
   type: 0
-  prefab: {fileID: 225077031991834588, guid: e2865f010891d4cda90f443c0fe28d13, type: 3}
+  prefab: {fileID: 225077031991834588, guid: ffd2b223af5ddf4428893470902373de, type: 3}
   objectstoadd: 3

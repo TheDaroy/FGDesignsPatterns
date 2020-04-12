@@ -7,7 +7,10 @@ public class ManagerBase: MonoBehaviour
 {
    
    [SerializeField] protected GameManager mainManager;
-
+    private void Awake()
+    {
+        mainManager.ManagerList.Add(this);
+    }
     protected virtual void OnEnable()
     {
         mainManager.state += StateSwitch;

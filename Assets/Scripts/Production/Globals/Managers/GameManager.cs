@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextAsset[] FileToRead;
     [SerializeField] private MapReader reader;
 
-    
-    
+
+    public List<ManagerBase> ManagerList = new List<ManagerBase>();
     public event EventHandler<GameState> state;
     private TileType[][] mapData;
     private UnitType[][] waveData;

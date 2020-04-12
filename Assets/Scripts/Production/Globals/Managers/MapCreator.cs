@@ -49,11 +49,13 @@ public class MapCreator : MonoBehaviour
                 manager.Reset += tile.DeSpawn;
                 tempTile.name = (x.ToString() + " : " + y.ToString());
 
+               
                 if (manager.TileSpawnList[i].TowerInfo)
                 {
                     Tower tower = tempTile.GetComponent<Tower>();
-                    Debug.Log(manager.TileSpawnList[i].TowerInfo.Projectile.pool);
-                   
+                    tower.unitManager = manager.unitManager;
+                    tower.projectilePool = manager.TileSpawnList[i].TowerInfo.Projectile.pool;
+                    Debug.Log(manager.TileSpawnList[i].TowerInfo.AttackSpeed);
                     tower.attackSpeed = manager.TileSpawnList[i].TowerInfo.AttackSpeed;               
                 }
                 break;

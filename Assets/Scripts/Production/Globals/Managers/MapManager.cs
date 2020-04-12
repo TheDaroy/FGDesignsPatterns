@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MapManager : ManagerBase
 {
+    [SerializeField] public UnitManager unitManager;
     [SerializeField] private MapCreator creator;
     #region Map Variables   
     [Header("Map Variables")]
@@ -18,7 +19,8 @@ public class MapManager : ManagerBase
     void Setup()
     {       
         if (creator == null) creator = gameObject.AddComponent<MapCreator>();
-        if (creator.manager == null) creator.manager = this;  
+        if (creator.manager == null) creator.manager = this;
+        
     }
 
     protected override void StateSwitch(object sender, GameState state)
@@ -41,7 +43,17 @@ public class MapManager : ManagerBase
                 break;
         }
     }
-
+    public float GetHeight(TileType type)
+    {
+        for (int i = 0; i < tileSpawnList.Length; i++)
+        {
+            if (tileSpawnList[i].Sign == type)
+            {
+                return tileSpawnList[i].Prefab.GetComponentInChildren<Renderer>().bounds.size.y / 2;
+            }
+        }
+        return 0;
+    }
     void CreateMap()
     {
         creator.CreateMap(cachedMapData);

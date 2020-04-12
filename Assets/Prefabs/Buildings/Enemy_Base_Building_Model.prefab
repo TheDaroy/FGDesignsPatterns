@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 677469871873758640}
   - component: {fileID: 114800133104322558}
   - component: {fileID: 114110400251543890}
+  - component: {fileID: 1256799599838492612}
   m_Layer: 0
   m_Name: Enemy_Base_Building_Model
   m_TagString: Untagged
@@ -226,7 +227,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7f27cb9a3b4664cb51ca8fae57afec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: 0
+  target: {fileID: 0}
   attackSpeed: 0
+  turret: {fileID: 8948594032436142142}
+  unitManager: {fileID: 0}
+--- !u!135 &1256799599838492612
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6189042043493516721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6923823013953481916
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ public class UnitSpawner : MonoBehaviour
             if (manager.UnitSpawnList[i].pool == null)
             {
                 manager.UnitSpawnList[i].InitiatePool();
+                manager.UnitSpawnList[i].pool.UnitReturned += manager.waveHandler.OnEnemyDespawn;
             }
         }
 
@@ -40,17 +41,20 @@ public class UnitSpawner : MonoBehaviour
                     if (manager.UnitSpawnList[x].TypeToSpawn == WaveToSpawn[enemyToSpawn])
                     {
 
-                        GameObject spawnedObject = manager.UnitSpawnList[x].pool.GetUnit(true);
+                        GameObject spawnedObject = manager.UnitSpawnList[x].pool.GetUnit(false);
                         spawnedObject.transform.position = manager.pathFinder.GetVector(0);
-
+                        
                         Unit unit = spawnedObject.GetComponent<Unit>();
+                        Debug.Log("Found Object: " + unit);
                         unit.manager = manager;
                         unit.Health = manager.UnitSpawnList[x].Health;
                         unit.Damage = manager.UnitSpawnList[x].Damage;
                         unit.WalkSpeed = manager.UnitSpawnList[x].WalkSpeed;
+                        unit.endGoal = manager.GetEndGoal();
                         manager.Reset += unit.DeSpawn;
                         timer = SpawnIntervals;
                         enemyToSpawn++;
+                        spawnedObject.SetActive(true);
                         break;
                     }
                 }
