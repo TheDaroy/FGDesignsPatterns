@@ -32,9 +32,7 @@ public class MapManager : ManagerBase
                 UpdateMapData(mainManager.GetTileData());
                 CreateMap();
                 break;
-            case GameState.Restart:
-                Reset?.Invoke(this);
-                CreateMap();
+            case GameState.Restart:                            
                 break;
             case GameState.NextLevel:
                 Reset?.Invoke(this);
