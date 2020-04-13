@@ -54,6 +54,8 @@ public class PathFinder
 
         
     }
+    
+  
    public Vector3 GetVector(int i)
     {        
         return new Vector3(path.ElementAt(i).y * 2, 0, path.ElementAt(i).x * 2);

@@ -46,31 +46,20 @@ namespace AI
             if (ancestors.ContainsKey(goal))
             {
                 List<Vector2Int> path = new List<Vector2Int>();
-                foreach (var node in ancestors)
+
+                while (currentNode != start)
                 {
-                    path.Add(node.Value);
+                    path.Add(currentNode);
                     currentNode = ancestors[currentNode];
                 }
                 path.Add(currentNode);
-                path.Reverse();
+                
+                
                 return path;
             }
             return null;
         }
 
-        //void ScanNeighbours( Vector2Int nodeToCheck)
-        //{
-                 
-        //    for (int i = 0; i < DirectionTools.Dirs.Length; i++)
-        //    {              
-        //        Vector2Int tempNode = nodeToCheck += DirectionTools.Dirs[i];
-        //        if (accessiblesTiles.Contains(tempNode) && !ancestors.ContainsKey(tempNode))
-        //        {
-        //            neighbours.Enqueue(tempNode);
-        //            ancestors.Add(tempNode, nodeToCheck);
-        //        }            
-        //    }            
-        //}
         
 	}
 
